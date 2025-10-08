@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
     <!-- Header -->
@@ -69,27 +69,58 @@
                     </div>
                 </div>
                 <div class="hero__visual">
-                    <div class="gift__wrapper">
-                        <div class="gift__box-3d">
-                            <div class="gift__ribbon-horizontal"></div>
-                            <div class="gift__ribbon-vertical"></div>
-                            <div class="gift__bow">
-                                <div class="bow__center"></div>
-                                <div class="bow__loop bow__loop--left"></div>
-                                <div class="bow__loop bow__loop--right"></div>
+                    <svg class="svg-container">
+                        <defs>
+                            <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+                                <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+                                <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                                    <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                                </feOffset>
+                                <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+                                <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                                    <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                                </feOffset>
+                                <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+                                <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+                                    <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                                </feOffset>
+                                <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+                                <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+                                    <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                                </feOffset>
+                                <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+                                <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+                                <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+                                <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B" />
+                            </filter>
+                        </defs>
+                    </svg>
+
+                    <div class="card-container">
+                        <div class="inner-container">
+                            <div class="border-outer">
+                                <div class="main-card"></div>
                             </div>
-                            <div class="gift__content-3d">
-                                <div class="gift__icon-3d">
-                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
-                                        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
-                                        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
+                            <div class="glow-layer-1"></div>
+                            <div class="glow-layer-2"></div>
+                        </div>
+
+                        <div class="overlay-1"></div>
+                        <div class="overlay-2"></div>
+                        <div class="background-glow"></div>
+
+                        <div class="content-container">
+                            <div class="content-top">
+                                <div class="scrollbar-glass">
+                                    ПОДАРОК
                                 </div>
-                                <div class="gift__text-3d">
-                                    <span class="gift__label">ПОДАРОК</span>
-                                    <span class="gift__value">$2000</span>
-                                </div>
+                                <p class="title">САЙТ ПАРТНЕРУ</p>
+                            </div>
+
+                            <hr class="divider" />
+
+                            <div class="content-bottom">
+                                <p class="description">стоимостью до $2000</p>
                             </div>
                         </div>
                     </div>
