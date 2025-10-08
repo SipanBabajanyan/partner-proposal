@@ -217,11 +217,16 @@ function initCounters() {
     const counters = document.querySelectorAll('.stat-number');
     
     const animateCounter = (counter) => {
+        // Skip animation for 24/7 - keep it as is
+        if (counter.textContent === '24/7') {
+            return;
+        }
+        
         const target = counter.textContent.includes('%') ? 
             parseInt(counter.textContent) : 
             (counter.textContent.includes('+') ? 
                 parseInt(counter.textContent) : 
-                (counter.textContent === '24/7' ? 24 : parseInt(counter.textContent)));
+                parseInt(counter.textContent));
         
         const duration = 2000;
         const increment = target / (duration / 16);
@@ -234,8 +239,6 @@ function initCounters() {
                     counter.textContent = target + '%';
                 } else if (counter.textContent.includes('+')) {
                     counter.textContent = target + '+';
-                } else if (counter.textContent === '24/7') {
-                    counter.textContent = '24/7';
                 } else {
                     counter.textContent = Math.floor(target);
                 }
@@ -245,8 +248,6 @@ function initCounters() {
                     counter.textContent = Math.floor(current) + '%';
                 } else if (counter.textContent.includes('+')) {
                     counter.textContent = Math.floor(current) + '+';
-                } else if (counter.textContent === '24/7') {
-                    counter.textContent = Math.floor(current) + '/7';
                 } else {
                     counter.textContent = Math.floor(current);
                 }

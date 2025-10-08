@@ -199,7 +199,6 @@ body {
 }
 
 .hero-content {
-    animation: slideInLeft 1s ease-out;
 }
 
 .hero-title {
@@ -211,11 +210,41 @@ body {
 }
 
 .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-color);
+    font-weight: 800;
 }
+
+.green-text {
+    color: #FF7500;
+    font-weight: 900;
+    font-size: 1.1em;
+    text-shadow: 
+        3px 3px 0px #000000,
+        -3px -3px 0px #000000,
+        3px -3px 0px #000000,
+        -3px 3px 0px #000000,
+        0px 3px 0px #000000,
+        0px -3px 0px #000000,
+        3px 0px 0px #000000,
+        -3px 0px 0px #000000,
+        0px 0px 15px rgba(255, 117, 0, 0.9);
+    position: relative;
+    display: inline-block;
+}
+
+.green-text::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #FF7500, #FF9500, #FF7500);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
 
 .hero-subtitle {
     font-size: 1.25rem;
@@ -228,18 +257,22 @@ body {
     display: flex;
     gap: 2rem;
     margin-bottom: 2rem;
+    justify-content: space-between;
 }
 
 .stat {
     text-align: center;
+    flex: 1;
+    min-width: 120px;
 }
 
 .stat-number {
     display: block;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1;
+    white-space: nowrap;
 }
 
 .stat-label {
@@ -301,7 +334,6 @@ body {
 
 /* Gift Card Component */
 .hero-visual {
-    animation: slideInRight 1s ease-out;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -510,14 +542,14 @@ body {
     padding-top: 16px;
 }
 
-/* Scrollbar glass component - зеленый вариант */
+/* Scrollbar glass component - очень яркий зеленый */
 .scrollbar-glass {
     background: radial-gradient(
         47.2% 50% at 50.39% 88.37%,
-        rgba(34, 197, 94, 0.3) 0%,
-        rgba(34, 197, 94, 0) 100%
+        rgba(0, 255, 0, 0.8) 0%,
+        rgba(0, 200, 0, 0.6) 100%
     ),
-    rgba(34, 197, 94, 0.1);
+    rgba(0, 255, 0, 0.7);
     position: relative;
     transition: background 0.3s ease;
     border-radius: 14px;
@@ -528,16 +560,16 @@ body {
     font-weight: bold;
     font-size: 14px;
     color: white;
-    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.8);
 }
 
 .scrollbar-glass:hover {
     background: radial-gradient(
         47.2% 50% at 50.39% 88.37%,
-        rgba(3, 179, 238, 0.4) 0%,
-        rgba(3, 179, 238, 0) 100%
+        rgba(0, 255, 0, 1) 0%,
+        rgba(0, 255, 0, 0.8) 100%
     ),
-    rgba(3, 179, 238, 0.2);
+    rgba(0, 255, 0, 0.9);
 }
 
 .scrollbar-glass::before {
@@ -550,10 +582,10 @@ body {
     padding: 1px;
     background: linear-gradient(
         150deg,
-        rgba(3, 179, 238, 0.6) 16.73%,
-        rgba(3, 179, 238, 0.1) 30.2%,
-        rgba(3, 179, 238, 0.1) 68.2%,
-        rgba(3, 179, 238, 0.8) 81.89%
+        rgba(0, 255, 0, 1) 16.73%,
+        rgba(0, 255, 0, 0.6) 30.2%,
+        rgba(0, 255, 0, 0.6) 68.2%,
+        rgba(0, 255, 0, 1) 81.89%
     );
     border-radius: inherit;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -1443,28 +1475,6 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Animations */
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
 @keyframes fadeInUp {
     from {
@@ -1518,6 +1528,14 @@ body {
         justify-content: center;
         flex-wrap: wrap;
         gap: 1rem;
+    }
+    
+    .stat {
+        min-width: 100px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
     }
     
     .hero-buttons {
@@ -1647,6 +1665,11 @@ body {
     .stat {
         width: 100%;
         text-align: center;
+        min-width: auto;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
     }
     
     .gift-card-wrapper {
