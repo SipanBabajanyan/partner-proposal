@@ -311,10 +311,28 @@ body {
     position: relative;
     transform: scale(1.05);
     transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 .gift-card-wrapper:hover {
     transform: scale(1.08);
+}
+
+/* Plus Icon Styles */
+.plus-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.plus-icon i {
+    font-size: 4rem;
+    color: var(--accent-color);
+    font-weight: 300;
 }
 
 /* SVG positioning */
@@ -492,14 +510,14 @@ body {
     padding-top: 16px;
 }
 
-/* Scrollbar glass component - адаптированный под светлую тему */
+/* Scrollbar glass component - зеленый вариант */
 .scrollbar-glass {
     background: radial-gradient(
         47.2% 50% at 50.39% 88.37%,
-        rgba(3, 179, 238, 0.3) 0%,
-        rgba(3, 179, 238, 0) 100%
+        rgba(34, 197, 94, 0.3) 0%,
+        rgba(34, 197, 94, 0) 100%
     ),
-    rgba(3, 179, 238, 0.1);
+    rgba(34, 197, 94, 0.1);
     position: relative;
     transition: background 0.3s ease;
     border-radius: 14px;
@@ -510,7 +528,7 @@ body {
     font-weight: bold;
     font-size: 14px;
     color: white;
-    box-shadow: 0 4px 15px rgba(3, 179, 238, 0.3);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
 }
 
 .scrollbar-glass:hover {
@@ -1565,6 +1583,12 @@ body {
     
     .gift-card-wrapper {
         transform: rotateY(0deg) rotateX(0deg) scale(0.8);
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .plus-icon i {
+        font-size: 3rem;
     }
     
     .main-card {
@@ -1627,6 +1651,12 @@ body {
     
     .gift-card-wrapper {
         transform: rotateY(0deg) rotateX(0deg) scale(0.7);
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .plus-icon i {
+        font-size: 2.5rem;
     }
     
     .main-card {
