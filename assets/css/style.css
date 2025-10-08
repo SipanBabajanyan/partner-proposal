@@ -390,6 +390,106 @@ p {
     color: #FFFFFF;
 }
 
+.gift__bow {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    animation: bowFloat 3s ease-in-out infinite;
+}
+
+@keyframes bowFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0px) rotate(-2deg); }
+    50% { transform: translateX(-50%) translateY(-5px) rotate(2deg); }
+}
+
+.bow__center {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 
+        0 4px 8px rgba(245, 158, 11, 0.4),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.bow__left {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid #F59E0B;
+    position: absolute;
+    top: 10px;
+    left: -25px;
+    transform: rotate(-15deg);
+    box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+.bow__left::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #D97706;
+    transform: rotate(15deg);
+}
+
+.bow__right {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid #F59E0B;
+    position: absolute;
+    top: 10px;
+    right: -25px;
+    transform: rotate(15deg);
+    box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+.bow__right::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #D97706;
+    transform: rotate(-15deg);
+}
+
+.bow__tail {
+    width: 60px;
+    height: 8px;
+    background: linear-gradient(90deg, #F59E0B 0%, #D97706 50%, #F59E0B 100%);
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+    animation: tailSway 2s ease-in-out infinite;
+}
+
+@keyframes tailSway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(5deg); }
+}
+
 .gift__content {
     margin-bottom: 1.5rem;
 }
