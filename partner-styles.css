@@ -1033,32 +1033,33 @@ body {
     right: -0.5rem;
     background: var(--accent-color);
     color: white;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1.8rem;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     transform: rotate(45deg);
-    box-shadow: 0 4px 15px rgba(3, 179, 238, 0.4);
+    box-shadow: 0 6px 20px rgba(3, 179, 238, 0.4);
     z-index: 10;
-    min-width: 80px;
+    border: 2px solid white;
+    min-width: 120px;
     text-align: center;
-    line-height: 1.2;
 }
 
 .level-card.featured .level-badge {
     background: var(--cta-color);
-    box-shadow: 0 4px 15px rgba(255, 117, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 117, 0, 0.4);
+    border: 2px solid white;
 }
 
 .level-card:nth-child(2) .level-badge {
-    background: #3B82F6;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .level-card:nth-child(3) .level-badge {
-    background: #8B5CF6;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
 .level-header {
@@ -1339,10 +1340,12 @@ body {
     
     .level-badge {
         font-size: 0.65rem;
-        padding: 0.4rem 1.5rem;
-        top: 0.3rem;
-        right: -0.3rem;
-        min-width: 70px;
+        padding: 0.4rem 1.4rem;
+        top: 0.6rem;
+        right: -0.6rem;
+        min-width: 100px;
+        font-weight: 800;
+        letter-spacing: 1px;
     }
 }
 
@@ -1398,9 +1401,11 @@ body {
     .level-badge {
         font-size: 0.6rem;
         padding: 0.3rem 1.2rem;
-        top: 0.2rem;
-        right: -0.2rem;
-        min-width: 60px;
+        top: 0.5rem;
+        right: -0.5rem;
+        min-width: 90px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
     }
 }
 
