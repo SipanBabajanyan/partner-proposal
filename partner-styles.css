@@ -950,6 +950,74 @@ body {
     opacity: 0;
     transform: translateY(30px);
     animation: slideInUp 0.6s ease-out forwards;
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.level-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.level-card.emotional {
+    border: 2px solid rgba(3, 179, 238, 0.2);
+}
+
+.level-card.emotional:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(3, 179, 238, 0.15);
+    border-color: var(--accent-color);
+}
+
+.level-card.featured {
+    border: 3px solid var(--cta-color);
+    box-shadow: 0 8px 30px rgba(255, 117, 0, 0.2);
+}
+
+.level-card.featured::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--cta-color) 0%, #ff9500 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.level-card.premium {
+    border: 3px solid #8B5CF6;
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
+}
+
+.level-card.premium::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8B5CF6 0%, #A855F7 100%);
+    border-radius: 20px 20px 0 0;
 }
 
 .level-card:nth-child(1) {
@@ -975,77 +1043,101 @@ body {
     }
 }
 
-.level-card {
-    background: white;
-    border-radius: 16px;
-    padding: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.level-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
-    border-radius: 24px;
-    z-index: -1;
-}
-
-.level-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border-color: rgba(37, 99, 235, 0.2);
-}
-
-.level-card.featured {
-    border: 2px solid var(--cta-color);
-    box-shadow: 0 4px 16px rgba(255, 117, 0, 0.15);
-}
-
-.level-card.featured::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--cta-color);
-    border-radius: 16px 16px 0 0;
-}
-
-.level-header {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
+/* Level Badge */
 .level-badge {
-    display: inline-block;
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
     background: linear-gradient(135deg, var(--cta-color) 0%, #ff9500 100%);
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(255, 117, 0, 0.3);
+    z-index: 10;
+}
+
+.premium-badge {
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+/* Level Header */
+.level-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-top: 1rem;
+}
+
+.level-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.level-icon .icon-pulse {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.level-card:hover .level-icon .icon-pulse {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+/* Level Icon Colors */
+.level1-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.level1-icon .icon-pulse {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    filter: blur(10px);
+}
+
+.level2-icon {
+    background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.level2-icon .icon-pulse {
+    background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+    filter: blur(10px);
+}
+
+.level3-icon {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.level3-icon .icon-pulse {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    filter: blur(10px);
 }
 
 .level-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--primary-color);
@@ -1055,13 +1147,49 @@ body {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .level-commission {
-    font-size: 1.25rem;
-    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.commission-value {
+    font-size: 2.5rem;
+    font-weight: 800;
     color: var(--cta-color);
+    line-height: 1;
+}
+
+.commission-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Level Content */
+.level-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.level-highlight {
+    background: rgba(3, 179, 238, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-left: 4px solid var(--accent-color);
+}
+
+.highlight-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
 .level-features {
@@ -1076,60 +1204,81 @@ body {
     gap: 0.75rem;
     margin-bottom: 0.75rem;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 400;
-    padding: 0.25rem 0;
-    white-space: nowrap;
+    padding: 0.5rem 0;
+    line-height: 1.4;
 }
 
 .level-features i {
     color: var(--accent-color);
-    font-size: 0.8rem;
-    background: rgba(16, 185, 129, 0.1);
-    padding: 0.2rem;
-    border-radius: 4px;
-    width: 20px;
-    height: 20px;
+    font-size: 0.9rem;
+    background: rgba(3, 179, 238, 0.1);
+    padding: 0.3rem;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
 }
 
-.level-features li:first-child {
-    font-weight: 600;
-    color: var(--primary-color);
-    background: rgba(37, 99, 235, 0.05);
-    padding: 0.5rem;
-    border-radius: 6px;
-    margin-bottom: 0.75rem;
-    border: 1px solid rgba(37, 99, 235, 0.1);
-    white-space: normal;
-    line-height: 1.4;
+.level-example {
+    margin: 1.5rem 0;
 }
 
-.level-features li:first-child i {
-    background: var(--primary-color);
-    color: white;
-    width: 20px;
-    height: 20px;
+.example-card {
+    background: rgba(3, 179, 238, 0.05);
+    border: 2px solid rgba(3, 179, 238, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.premium-card {
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+.example-label {
     font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.example-amount {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--cta-color);
+}
+
+.premium-card .example-amount {
+    color: #8B5CF6;
+}
+
+.example-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
 .level-result {
-    padding: 0.75rem;
-    background: rgba(37, 99, 235, 0.03);
-    border-radius: 8px;
-    border: 1px solid rgba(37, 99, 235, 0.08);
+    padding: 1rem;
+    background: rgba(3, 179, 238, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(3, 179, 238, 0.1);
     color: var(--text-primary);
     font-weight: 500;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-top: auto;
+    text-align: center;
 }
 
 .level-button-container {
-    margin-top: auto;
-    padding-top: 1.5rem;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -1138,8 +1287,8 @@ body {
 .level-button {
     width: 100%;
     text-align: center;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     border-radius: 12px;
     transition: all 0.3s ease;
@@ -1149,12 +1298,29 @@ body {
     justify-content: center;
     gap: 0.5rem;
     box-sizing: border-box;
-    min-height: 48px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
-    color: white;
-    border: none;
+    min-height: 52px;
     position: relative;
     overflow: hidden;
+}
+
+.btn-primary.level-button {
+    background: linear-gradient(135deg, var(--cta-color) 0%, #ff9500 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 117, 0, 0.3);
+}
+
+.btn-outline.level-button {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-premium.level-button {
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
 }
 
 .level-button::before {
@@ -1174,8 +1340,20 @@ body {
 
 .level-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-    background: linear-gradient(135deg, #1e40af 0%, var(--primary-color) 100%);
+}
+
+.btn-primary.level-button:hover {
+    box-shadow: 0 8px 25px rgba(255, 117, 0, 0.4);
+}
+
+.btn-outline.level-button:hover {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 8px 25px rgba(10, 19, 103, 0.3);
+}
+
+.btn-premium.level-button:hover {
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
 }
 
 .level-button i {
@@ -1184,6 +1362,16 @@ body {
 
 .level-button:hover i {
     transform: translateX(3px);
+}
+
+/* Hover animations */
+.level-card:hover .level-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.level-card:hover .commission-value {
+    color: var(--accent-color);
+    transform: scale(1.05);
 }
     font-size: 0.9rem;
 }
@@ -2253,6 +2441,60 @@ body {
         gap: 1.5rem;
     }
     
+    .level-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .level-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .commission-value {
+        font-size: 2.2rem;
+    }
+    
+    .level-title {
+        font-size: 1.4rem;
+    }
+    
+    .level-description {
+        font-size: 1rem;
+    }
+    
+    .level-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 1.2rem;
+    }
+    
+    .level-highlight {
+        padding: 0.8rem;
+    }
+    
+    .highlight-text {
+        font-size: 0.9rem;
+    }
+    
+    .level-features li {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+    }
+    
+    .example-card {
+        padding: 0.8rem;
+    }
+    
+    .example-amount {
+        font-size: 1.3rem;
+    }
+    
+    .level-button {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+        min-height: 48px;
+    }
+    
     .services-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -2549,6 +2791,68 @@ body {
         padding: 0.3rem 1.2rem;
         top: 0.6rem;
         right: -0.6rem;
+    }
+    
+    .level-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .level-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+    
+    .commission-value {
+        font-size: 2rem;
+    }
+    
+    .level-title {
+        font-size: 1.3rem;
+    }
+    
+    .level-description {
+        font-size: 0.95rem;
+    }
+    
+    .level-badge {
+        font-size: 0.6rem;
+        padding: 0.3rem 1rem;
+    }
+    
+    .level-highlight {
+        padding: 0.6rem;
+    }
+    
+    .highlight-text {
+        font-size: 0.85rem;
+    }
+    
+    .level-features li {
+        font-size: 0.85rem;
+        padding: 0.3rem 0;
+    }
+    
+    .example-card {
+        padding: 0.6rem;
+    }
+    
+    .example-amount {
+        font-size: 1.2rem;
+    }
+    
+    .example-label {
+        font-size: 0.75rem;
+    }
+    
+    .example-desc {
+        font-size: 0.8rem;
+    }
+    
+    .level-button {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+        min-height: 44px;
     }
 }
 
