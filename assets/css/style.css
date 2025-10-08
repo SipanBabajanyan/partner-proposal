@@ -401,26 +401,6 @@ p {
     margin-bottom: 0;
 }
 
-.gift__features {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.gift__feature {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: #64748B;
-}
-
-.gift__feature-icon {
-    color: #10B981;
-    font-weight: 700;
-    font-size: 1rem;
-}
-
 .hero__card {
     background: #1E293B;
     border: 1px solid #334155;
