@@ -318,214 +318,266 @@ p {
     justify-content: center;
     align-items: center;
     position: relative;
-    perspective: 2000px;
 }
 
-.gift__wrapper {
-    position: relative;
-    transform-style: preserve-3d;
-    animation: giftFloat 4s ease-in-out infinite;
+/* CSS Variables */
+:root {
+    --electric-border-color: #10B981;
+    --electric-light-color: oklch(from var(--electric-border-color) l c h);
+    --gradient-color: oklch(
+      from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4
+    );
+    --color-neutral-900: oklch(0.185 0 0);
 }
 
-@keyframes giftFloat {
-    0%, 100% { 
-        transform: rotateY(-10deg) rotateX(5deg) translateY(0px);
-    }
-    50% { 
-        transform: rotateY(10deg) rotateX(-5deg) translateY(-15px);
-    }
-}
-
-.gift__box-3d {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(145deg, #1E293B 0%, #0F172A 50%, #1E293B 100%);
-    border: 3px solid #10B981;
-    border-radius: 12px;
-    box-shadow: 
-        0 20px 40px rgba(16, 185, 129, 0.3),
-        inset 0 2px 0 rgba(255, 255, 255, 0.1),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-    transform-style: preserve-3d;
-    overflow: hidden;
-}
-
-.gift__ribbon-horizontal {
+/* SVG positioning */
+.svg-container {
     position: absolute;
-    top: 50%;
+}
+
+/* Card container */
+.card-container {
+    padding: 2px;
+    border-radius: 24px;
+    position: relative;
+    background: linear-gradient(
+        -30deg,
+        var(--gradient-color),
+        transparent,
+        var(--gradient-color)
+      ),
+      linear-gradient(
+        to bottom,
+        var(--color-neutral-900),
+        var(--color-neutral-900)
+      );
+}
+
+/* Inner container */
+.inner-container {
+    position: relative;
+}
+
+/* Border layers */
+.border-outer {
+    border: 2px solid rgba(16, 185, 129, 0.5);
+    border-radius: 24px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}
+
+.main-card {
+    width: 350px;
+    height: 200px;
+    border-radius: 24px;
+    border: 2px solid var(--electric-border-color);
+    margin-top: -4px;
+    margin-left: -4px;
+    filter: url(#turbulent-displace);
+}
+
+/* Glow effects */
+.glow-layer-1 {
+    border: 2px solid rgba(16, 185, 129, 0.6);
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
     left: 0;
     right: 0;
-    height: 8px;
-    background: linear-gradient(90deg, #F59E0B 0%, #D97706 50%, #F59E0B 100%);
-    transform: translateY(-50%);
-    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
-    z-index: 2;
-}
-
-.gift__ribbon-vertical {
-    position: absolute;
-    left: 50%;
-    top: 0;
     bottom: 0;
-    width: 8px;
-    background: linear-gradient(180deg, #F59E0B 0%, #D97706 50%, #F59E0B 100%);
-    transform: translateX(-50%);
-    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
-    z-index: 2;
+    filter: blur(1px);
 }
 
-.gift__bow {
+.glow-layer-2 {
+    border: 2px solid var(--electric-light-color);
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    animation: bowBounce 2s ease-in-out infinite;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(4px);
 }
 
-@keyframes bowBounce {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
-}
-
-.bow__center {
+/* Overlay effects */
+.overlay-1 {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(145deg, #F59E0B 0%, #D97706 100%);
-    border-radius: 50%;
-    box-shadow: 
-        0 4px 8px rgba(245, 158, 11, 0.4),
-        inset 0 2px 0 rgba(255, 255, 255, 0.3),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-    z-index: 4;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    opacity: 1;
+    mix-blend-mode: overlay;
+    transform: scale(1.1);
+    filter: blur(16px);
+    background: linear-gradient(
+      -30deg,
+      white,
+      transparent 30%,
+      transparent 70%,
+      white
+    );
 }
 
-.bow__loop {
+.overlay-2 {
     position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    transform: scale(1.1);
+    filter: blur(16px);
+    background: linear-gradient(
+      -30deg,
+      white,
+      transparent 30%,
+      transparent 70%,
+      white
+    );
 }
 
-.bow__loop--left {
-    top: 10px;
-    left: -15px;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 35px solid #F59E0B;
-    transform: rotate(-15deg);
-    box-shadow: 0 3px 6px rgba(245, 158, 11, 0.3);
-}
-
-.bow__loop--right {
-    top: 10px;
-    right: -15px;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 35px solid #F59E0B;
-    transform: rotate(15deg);
-    box-shadow: 0 3px 6px rgba(245, 158, 11, 0.3);
-}
-
-.gift__content-3d {
+/* Background glow */
+.background-glow {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    filter: blur(32px);
+    transform: scale(1.1);
+    opacity: 0.3;
+    z-index: -1;
+    background: linear-gradient(
+      -30deg,
+      var(--electric-light-color),
+      transparent,
+      var(--electric-border-color)
+    );
 }
 
-.gift__icon-3d {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(145deg, #10B981 0%, #059669 50%, #10B981 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 10px;
-    color: #FFFFFF;
-    box-shadow: 
-        0 8px 16px rgba(16, 185, 129, 0.4),
-        inset 0 2px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-    animation: iconRotate 3s linear infinite;
-}
-
-@keyframes iconRotate {
-    0% { transform: rotateY(0deg); }
-    100% { transform: rotateY(360deg); }
-}
-
-.gift__text-3d {
+/* Content container */
+.content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 5px;
 }
 
-.gift__label {
-    color: #10B981;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    letter-spacing: 1px;
-    animation: labelGlow 2s ease-in-out infinite;
+/* Content sections */
+.content-top {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    padding-bottom: 8px;
+    height: 100%;
 }
 
-@keyframes labelGlow {
-    0%, 100% { 
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    50% { 
-        text-shadow: 
-            0 2px 4px rgba(0, 0, 0, 0.5),
-            0 0 10px rgba(16, 185, 129, 0.6);
-    }
+.content-bottom {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    padding-top: 8px;
 }
 
-.gift__value {
-    color: #F59E0B;
-    font-size: 1.8rem;
-    font-weight: 900;
-    text-shadow: 
-        0 0 15px rgba(245, 158, 11, 0.6),
-        0 2px 4px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
-    animation: valuePulse 1.5s ease-in-out infinite;
+/* Scrollbar glass component */
+.scrollbar-glass {
+    background: radial-gradient(
+        47.2% 50% at 50.39% 88.37%,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      rgba(255, 255, 255, 0.04);
+    position: relative;
+    transition: background 0.3s ease;
+    border-radius: 14px;
+    width: fit-content;
+    height: fit-content;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-@keyframes valuePulse {
-    0%, 100% { 
-        transform: scale(1);
-        text-shadow: 
-            0 0 15px rgba(245, 158, 11, 0.6),
-            0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    50% { 
-        transform: scale(1.1);
-        text-shadow: 
-            0 0 25px rgba(245, 158, 11, 0.8),
-            0 2px 4px rgba(0, 0, 0, 0.5);
-    }
+.scrollbar-glass:hover {
+    background: radial-gradient(
+        47.2% 50% at 50.39% 88.37%,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      rgba(255, 255, 255, 0.08);
 }
 
-.gift__wrapper:hover .gift__box-3d {
-    transform: rotateY(15deg) rotateX(10deg) scale(1.1);
-    box-shadow: 
-        0 30px 60px rgba(16, 185, 129, 0.4),
-        inset 0 2px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+.scrollbar-glass::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1px;
+    background: linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.48) 16.73%,
+      rgba(255, 255, 255, 0.08) 30.2%,
+      rgba(255, 255, 255, 0.08) 68.2%,
+      rgba(255, 255, 255, 0.6) 81.89%
+    );
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
 }
 
-.gift__wrapper:hover .gift__bow {
-    animation: bowBounce 0.5s ease-in-out infinite;
+/* Typography */
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: auto;
+    color: #FFFFFF;
+}
+
+.description {
+    opacity: 0.7;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+/* Divider */
+.divider {
+    margin-top: auto;
+    border: none;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.1;
+    mask-image: linear-gradient(to right, transparent, black, transparent);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black,
+      transparent
+    );
 }
 
 .gift__ribbon {
