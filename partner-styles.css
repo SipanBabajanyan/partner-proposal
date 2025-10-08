@@ -479,6 +479,7 @@ body {
 .content-top {
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 48px;
     padding-bottom: 16px;
     height: 100%;
@@ -487,6 +488,7 @@ body {
 .content-bottom {
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 48px;
     padding-top: 16px;
 }
@@ -547,16 +549,18 @@ body {
 .title {
     font-size: 36px;
     font-weight: 800;
-    margin-top: auto;
+    margin-top: 30%;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .description {
     opacity: 0.8;
     color: rgba(255, 255, 255, 0.9);
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
+    text-align: center;
 }
 
 .gift-value {
@@ -564,7 +568,8 @@ body {
     font-weight: 900;
     color: var(--accent-color);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin-top: 8px;
+    margin-top: 0px;
+    text-align: center;
 }
 
 /* Divider - адаптированный под светлую тему */
@@ -581,6 +586,97 @@ body {
         white,
         transparent
     );
+}
+
+
+/* Website preview mini */
+.website-preview {
+    margin-top: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(3, 179, 238, 0.3);
+    backdrop-filter: blur(10px);
+    animation: previewGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes previewGlow {
+    from {
+        box-shadow: 0 0 10px rgba(3, 179, 238, 0.3);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(3, 179, 238, 0.5);
+    }
+}
+
+.browser-header {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.browser-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27ca3f; }
+
+.browser-url {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+}
+
+.browser-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.preview-line {
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 2px;
+    animation: lineGlow 2s ease-in-out infinite;
+}
+
+.preview-line.short {
+    width: 60%;
+    animation-delay: 0.5s;
+}
+
+.preview-line.medium {
+    width: 80%;
+    animation-delay: 1s;
+}
+
+@keyframes lineGlow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scaleX(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1.05);
+    }
 }
 
 /* Sections */
@@ -1494,6 +1590,20 @@ body {
         padding: 32px;
         padding-top: 12px;
     }
+    
+    
+    .website-preview {
+        margin-top: 12px;
+    }
+    
+    .browser-header {
+        padding: 6px 8px;
+    }
+    
+    .browser-content {
+        padding: 8px;
+        gap: 4px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1546,6 +1656,28 @@ body {
     .scrollbar-glass {
         font-size: 12px;
         padding: 6px 12px;
+    }
+    
+    
+    .website-preview {
+        margin-top: 8px;
+    }
+    
+    .browser-header {
+        padding: 4px 6px;
+    }
+    
+    .browser-url {
+        font-size: 8px;
+    }
+    
+    .browser-content {
+        padding: 6px;
+        gap: 3px;
+    }
+    
+    .preview-line {
+        height: 3px;
     }
 }
 
