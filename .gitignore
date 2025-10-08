@@ -117,3 +117,11 @@ env/
 
 # Text files created during development
 proposal_text.txt
+
+# Example website (reference only)
+example website/
+
+# Old website files (deleted)
+index.html
+assets/
+pages/
