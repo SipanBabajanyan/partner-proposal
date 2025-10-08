@@ -191,28 +191,23 @@ function initGiftCardAnimation() {
     if (giftCardWrapper) {
         // Add hover effects
         giftCardWrapper.addEventListener('mouseenter', function() {
-            this.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1.1)';
-            this.style.boxShadow = '0 40px 80px rgba(10, 19, 103, 0.5)';
+            this.style.transform = 'scale(1.08)';
         });
         
         giftCardWrapper.addEventListener('mouseleave', function() {
-            this.style.transform = 'rotateY(-5deg) rotateX(5deg) scale(1.05)';
-            this.style.boxShadow = '0 20px 40px rgba(10, 19, 103, 0.3)';
+            this.style.transform = 'scale(1.05)';
         });
         
         // Add click effect
         giftCardWrapper.addEventListener('click', function() {
-            this.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1.05)';
-            setTimeout(() => {
-                this.style.transform = 'rotateY(-5deg) rotateX(5deg) scale(1.05)';
-            }, 200);
+            this.style.transform = 'scale(1.05)';
         });
         
         // Add scroll-based animation
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.5;
-            giftCardWrapper.style.transform = `rotateY(-5deg) rotateX(5deg) scale(1.05) translateY(${rate}px)`;
+            giftCardWrapper.style.transform = `scale(1.05) translateY(${rate}px)`;
         });
     }
 }

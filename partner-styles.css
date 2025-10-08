@@ -309,13 +309,12 @@ body {
 
 .gift-card-wrapper {
     position: relative;
-    perspective: 1000px;
-    transform: rotateY(-5deg) rotateX(5deg);
-    transition: all 0.3s ease;
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
 }
 
 .gift-card-wrapper:hover {
-    transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+    transform: scale(1.08);
 }
 
 /* SVG positioning */
