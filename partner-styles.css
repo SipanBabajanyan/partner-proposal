@@ -1029,23 +1029,36 @@ body {
 /* Level Badge */
 .level-badge {
     position: absolute;
-    top: 1rem;
-    right: -1rem;
+    top: 0.5rem;
+    right: -0.5rem;
     background: var(--accent-color);
     color: white;
-    padding: 0.4rem 1.5rem;
-    font-size: 0.7rem;
+    padding: 0.5rem 2rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     transform: rotate(45deg);
-    box-shadow: 0 4px 15px rgba(3, 179, 238, 0.3);
+    box-shadow: 0 4px 15px rgba(3, 179, 238, 0.4);
     z-index: 10;
+    min-width: 80px;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .level-card.featured .level-badge {
     background: var(--cta-color);
-    box-shadow: 0 4px 15px rgba(255, 117, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 117, 0, 0.4);
+}
+
+.level-card:nth-child(2) .level-badge {
+    background: #3B82F6;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.level-card:nth-child(3) .level-badge {
+    background: #8B5CF6;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
 }
 
 .level-header {
@@ -1325,10 +1338,11 @@ body {
     }
     
     .level-badge {
-        font-size: 0.6rem;
-        padding: 0.3rem 1.2rem;
-        top: 0.8rem;
-        right: -0.8rem;
+        font-size: 0.65rem;
+        padding: 0.4rem 1.5rem;
+        top: 0.3rem;
+        right: -0.3rem;
+        min-width: 70px;
     }
 }
 
@@ -1382,10 +1396,11 @@ body {
     }
     
     .level-badge {
-        font-size: 0.55rem;
-        padding: 0.25rem 1rem;
-        top: 0.6rem;
-        right: -0.6rem;
+        font-size: 0.6rem;
+        padding: 0.3rem 1.2rem;
+        top: 0.2rem;
+        right: -0.2rem;
+        min-width: 60px;
     }
 }
 
