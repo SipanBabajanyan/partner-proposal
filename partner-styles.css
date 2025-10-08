@@ -946,14 +946,6 @@ body {
     align-items: stretch;
 }
 
-.level-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    min-width: 0;
-}
-
 .level-card {
     opacity: 0;
     transform: translateY(30px);
@@ -1135,13 +1127,21 @@ body {
     margin-top: auto;
 }
 
+.level-button-container {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .level-button {
     width: 100%;
     text-align: center;
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 8px;
+    font-weight: 600;
+    border-radius: 12px;
     transition: all 0.3s ease;
     text-decoration: none;
     display: flex;
@@ -1149,12 +1149,41 @@ body {
     justify-content: center;
     gap: 0.5rem;
     box-sizing: border-box;
-    min-height: 44px;
+    min-height: 48px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.level-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.level-button:hover::before {
+    left: 100%;
 }
 
 .level-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(135deg, #1e40af 0%, var(--primary-color) 100%);
+}
+
+.level-button i {
+    transition: transform 0.3s ease;
+}
+
+.level-button:hover i {
+    transform: translateX(3px);
 }
     font-size: 0.9rem;
 }
@@ -1176,10 +1205,6 @@ body {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 0 1rem;
-    }
-    
-    .level-wrapper {
-        gap: 1rem;
     }
     
     .level-card {
@@ -1214,6 +1239,10 @@ body {
     .level-result {
         padding: 0.75rem;
         font-size: 0.85rem;
+    }
+    
+    .level-button-container {
+        padding-top: 1rem;
     }
     
     .level-button {
